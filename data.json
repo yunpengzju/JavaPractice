@@ -1,0 +1,8 @@
+{
+  "f_name": "Some", 
+  "l_name": "Person", 
+  "email_address": "someperson@example.com", 
+  "phone": "604-555-1234",
+  "website":"http://www.123.com",
+  "note": "Some notes about this person."
+}
