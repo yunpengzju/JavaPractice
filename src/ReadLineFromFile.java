@@ -7,6 +7,9 @@ public class ReadLineFromFile {
 	private String[] array;
 	private String fileName;
 	private int size;
+	public ReadLineFromFile(){
+		
+	}
 	public ReadLineFromFile(String file){
 		array = new String[16];
 		fileName = file;
