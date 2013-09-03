@@ -1,10 +1,35 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.LinkedList;
 import java.util.Scanner;
 
 
 public class ReadLineFromFile {
+	private String[] array;
+	private String fileName;
+	private int size;
+	public ReadLineFromFile(String file){
+		array = new String[16];
+		fileName = file;
+	}
+	public void readByLine() throws FileNotFoundException{
+		File file = new File(fileName);
+		Scanner input = new Scanner(file);
+		if (size >= array.length){
+			String[] temp = new String[array.length*2];
+			System.arraycopy(array, 0, temp, 0, array.length);
+			array = temp;
+		}
+		while(input.hasNext()){
+			array[size++] = input.nextLine();
+		}
+		input.close();
+	}
+	public void displayList(){
+		
+		for(int i = 0; i < size; i++){
+			System.out.println(array[i]);
+		}
+	}
 	public static void main(String[] args)
 	{
 		if (args.length != 1){
@@ -21,25 +46,4 @@ public class ReadLineFromFile {
 		}
 		reader.displayList();
 	}
-	public ReadLineFromFile(String file){
-		list = new LinkedList<String>();
-		fileName = file;
-	}
-	public void readByLine() throws FileNotFoundException{
-		File file = new File(fileName);
-		Scanner input = new Scanner(file);
-
-		while(input.hasNext()){
-			list.add(input.nextLine());
-		}
-		input.close();
-	}
-	public void displayList(){
-		LinkedList<String> temp = list;
-		while(!temp.isEmpty()){
-			System.out.println(temp.pop());
-		}
-	}
-	private LinkedList<String> list;
-	private String fileName;
 }
