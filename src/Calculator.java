@@ -1,17 +1,25 @@
 import java.util.*;
-public class Calculator {
+public class Calculator extends UnitTest{
 	private String str;
 	private int[] number;
 	private char[] operator;
 	private int number_top;
 	private int op_top;
-	
+	public Calculator(){
+		number = new int[100];
+		operator = new char[100];
+		number_top = 0;
+		op_top = 0;
+	}
 	public Calculator(String str){
 		this.str = str;
 		number = new int[100];
 		operator = new char[100];
 		number_top = 0;
 		op_top = 0;
+	}
+	private void setStr(String str){
+		this.str = str;
 	}
 	public void pushNum(int a){
 		number[number_top++] = a;
@@ -94,11 +102,20 @@ public class Calculator {
 		System.out.println();
 		System.out.println(operator);
 	}
+	protected boolean testProgram(String input, String output){
+		this.setStr(input);
+		System.out.println("correct result: "+ output);
+		System.out.println("present result: "+ this.compute());
+		return String.valueOf(this.compute()).equals(output);
+	}
 	public static void main(String[] args){
 		Scanner input = new Scanner(System.in);
-		String str = input.next();
-		Calculator c = new Calculator(str);
-		System.out.println(c.compute());	
+		//String str = input.next();
+		Calculator c = new Calculator();
+		String[] in = {"2+3","3+5"};
+		String[] out = {"5","8"};
+		c.setTestCase(in, out);
+		System.out.println("Final result:" +c.test());	
 	}
 }
 
